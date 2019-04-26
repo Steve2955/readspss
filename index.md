@@ -6,6 +6,22 @@ the package did grow over the years. Today `readspss` is well tested using
 every sav, por and zsav file I could lay my hands on. Import is considered 
 feature complete, write support is available, just not yet for every feature.
 
+## Installation
+
+Installation is provided using `drat` or `devtools`. The `drat` repo provides
+binary files for Windows in case one has no rtools installed.
+
+With `drat`:
+```R
+drat::addRepo("JanMarvin")
+install.packages("readspss")
+```
+
+With `devtools`:
+```R
+devtools::install_git("https://github.com/JanMarvin/readspss.git")
+```
+
 ## Import
 
 For the import of sav and por files `read.sav()` and `read.por()` are available.
@@ -126,8 +142,8 @@ hours of trial and error lead to the current state of the package.
 
 `readspss` uses code of Ben Pfaff for the encryption part. It uses code from TDA
 by Goetz Rohwer and Ulrich Poetter for the conversion of numerics in the por-
-parser. The PSPP documentation was a huge help. The testing of Ulrich Poetter
-was a very welcome.
+parser. The PSPP documentation was a huge help. Without the testing by Ulrich
+Poetter this package would not be as complete as it is.
 
 ## Last words
 
