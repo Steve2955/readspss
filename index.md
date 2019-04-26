@@ -113,19 +113,20 @@ release. Still over the years the SPSS file format has changed. Not drastically
 but new features such as long strings were implemented. Features that `foreign` 
 cannot handle. The newest of the three aforementioned packages, `haven`, is a 
 wrapper around the `ReadStat` C library. The package development began around
-the time we started with `readstata13` so it is around quite some time now.
-Contrary to many other people in the R world, I am not a huge fan of `tibbles` 
-which are an integral part of `haven`. One can agree that this is a minor 
-problem. My bigger problem with the package is, that I am not yet convinced that
-`ReadStat` and `haven` are tested enough. Even though I am sure that authors of 
-both packages made sure that in most cases their package works, in many cases it
-does not. During the development process of `readspss` I reported a few bugs to 
-the haven package. Among them were incorrectly trimmed long strings and a severe
-bug where por-files read simply incorrect values. All errors were found using 
-publicly available data files, writing unit tests and comparing data across 
-different R-packages, PSPP and various versions of SPSS. Until I see that such
-behavior is adopted by other packages, I simply do not trust them. If the import
-process of data fails, one does not have to worry about everything that follows.
+the time we started with [`readstata13`](https://github.com/sjewo/readstata13)
+so it is around quite some time now. Contrary to many other people in the R 
+world, I am not a huge fan of `tibbles` which are an integral part of `haven`.
+One can agree that this is a minor problem. My bigger problem with the package 
+is, that I am not yet convinced that `ReadStat` and `haven` are tested enough. 
+Even though I am sure that authors of both made sure that in most cases their 
+package works, in many cases it does not. During the development process of 
+`readspss` I reported a few bugs to the haven package. Among them were 
+incorrectly trimmed long strings and a severe bug where por-files read simply 
+incorrect values. All errors were found using publicly available data files, 
+writing unit tests and comparing data across different R-packages, PSPP and 
+various versions of SPSS. Until I see that such behavior is adopted by other
+packages, I simply do not trust them. If the import process of data fails, one
+does not have to worry about everything that follows.
 
 The development of `readspss` began once development of `readstata13` slowed
 down. Having written most of the `c++` code to import dta-files, I learned a lot
