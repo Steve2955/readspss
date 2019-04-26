@@ -1,15 +1,19 @@
 # `readspss` -- importing SPSS files to R
 
-Welcome to the `readspss` package. The package is written from scratch with
-additional code for special cases. Starting as a side project for to learn Rcpp
-the package did grow over the years. Today `readspss` is well tested using
+Welcome to the `readspss` package. The package was written from scratch with
+additional code for special cases. Starting as a side project for me to learn
+Rcpp the package did grow over the years. Today `readspss` is well tested using
 every sav, por and zsav file I could lay my hands on. Import is considered 
 feature complete, write support is available, just not yet for every feature.
+
 
 ## Installation
 
 Installation is provided using `drat` or `devtools`. The `drat` repo provides
-binary files for Windows in case one has no rtools installed.
+binary files for Windows in case one has no rtools installed. Travis indicates
+that building on a Mac is possible.^[Still since I do not own such system and
+have not yet figured out how to export binary files from Travis, it is unlikely
+that the repo will contain Mac binary files anytime soon.]
 
 With `drat`:
 ```R
@@ -21,6 +25,7 @@ With `devtools`:
 ```R
 devtools::install_git("https://github.com/JanMarvin/readspss.git")
 ```
+
 
 ## Import
 
@@ -85,6 +90,7 @@ such as the datalabel, timestamp, filelabel, additional documentation and
 information regarding missings, labels, file encoding. A complete list of
 attributes can be found using `?read.sav` and `?read.por`.
 
+
 ## Export
 
 R data.frame objects can be exported using `write.sav()` and `write.por()`.
@@ -99,7 +105,8 @@ write.por(cars, filepath = "cars.por")
 
 Export provides a few options to add a label, for compression of sav files and
 conversion of dates. Currently it is not possible to export zsav-files and it is
-not possible to export strings longer than 255 chars.
+not possible to export strings longer than 255 chars. Obviously all exported 
+files can be imported using SPSS and `readspss` (PSPP is expected to work).
 
 
 ## Package development
@@ -119,32 +126,34 @@ world, I am not a huge fan of `tibbles` which are an integral part of `haven`.
 One can agree that this is a minor problem. My bigger problem with the package 
 is, that I am not yet convinced that `ReadStat` and `haven` are tested enough. 
 Even though I am sure that authors of both made sure that in most cases their 
-package works, in many cases it does not. During the development process of 
-`readspss` I reported a few bugs to the haven package. Among them were 
-incorrectly trimmed long strings and a severe bug where por-files read simply 
-incorrect values. All errors were found using publicly available data files, 
-writing unit tests and comparing data across different R-packages, PSPP and 
-various versions of SPSS. Until I see that such behavior is adopted by other
-packages, I simply do not trust them. If the import process of data fails, one
-does not have to worry about everything that follows.
+software works, there are still cases where it does not. During the development
+process of `readspss` I reported a few bugs to the haven package. Among them 
+were incorrectly trimmed long strings and a severe bug where por-files imported
+awfully incorrect values. All errors were found using publicly available data
+files, writing unit tests and comparing data across different R-packages, PSPP
+and various versions of SPSS. Until I see that such behavior is adopted by other
+packages, I simply do not trust them and maybe you should not either. If the
+import process of data fails, one does not have to worry about anything else.
 
 The development of `readspss` began once development of `readstata13` slowed
 down. Having written most of the `c++` code to import dta-files, I learned a lot
 about binary files and Rcpp development. Since SPSS was another statistical
-software used at the university I worked at that time, it felt natural to have
-a look at sav-files. Shortly after I learned that the dta-file documentation is
-priceless, not available for SPSS and development ceased for quite some time.
-In February 2018 I changed jobs, resulting in many train rides. A project was
-needed and development began again. Using the PSPP documentation and countless 
-hours of trial and error lead to the current state of the package.
+software used at the university where I worked at that time, it felt natural to
+have a look at sav-files. Shortly after I learned that the dta-file 
+documentation is priceless, not available for SPSS and development ceased for 
+quite some time. In February 2018 I changed jobs, resulting in many train rides.
+A project was needed and development began again. Using the PSPP documentation
+and countless hours of trial and error lead to the current state of the package.
 
 
 ## Thanks
 
-`readspss` uses code of Ben Pfaff for the encryption part. It uses code from TDA
-by Goetz Rohwer and Ulrich Poetter for the conversion of numerics in the por-
-parser. The PSPP documentation was a huge help. Without the testing by Ulrich
-Poetter this package would not be as complete as it is.
+`readspss` uses code of Ben Pfaff for the encryption part. It uses code from 
+[TDA](http://www.stat.ruhr-uni-bochum.de/tda.html) by Goetz Rohwer and Ulrich
+Poetter for the conversion of numerics in the por-parser. The PSPP documentation
+was a huge help. Without the testing by Ulrich Poetter this package would not be
+as complete as it is.
+
 
 ## Last words
 
