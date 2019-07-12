@@ -104,9 +104,9 @@ write.por(cars, filepath = "cars.por")
 ```
 
 Export provides a few options to add a label, for compression of sav files and
-conversion of dates. Currently it is not possible to export zsav-files and it is
-not possible to export strings longer than 255 chars. Obviously all exported 
-files can be imported using SPSS and `readspss` (PSPP is expected to work).
+conversion of dates. Currently it is not possible to export strings longer than 
+255 chars. Obviously all exported files can be imported using SPSS and 
+`readspss` (PSPP is expected to work).
 
 
 ## Package development
