@@ -11,7 +11,7 @@ feature complete, write support is available, just not yet for every feature.
 
 Installation is provided using `drat` or `devtools`. The `drat` repo provides
 binary files for Windows in case one has no rtools installed. Travis indicates
-that building on a Mac is possible.^[Still since I do not own such system and
+that building on a Mac is possible.[^Still since I do not own such system and
 have not yet figured out how to export binary files from Travis, it is unlikely
 that the repo will contain Mac binary files anytime soon.]
 
