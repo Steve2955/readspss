@@ -38,6 +38,10 @@ library(readspss)
 fl_sav <- system.file("extdata", "electric.sav", package = "readspss")
 ds <- read.sav(fl_sav)
 
+# example using zsav
+fl_zsav <- system.file("extdata", "cars.zsav", package = "readspss")
+dz <- read.sav(fl_zsav)
+
 # example using por
 fl_por <- system.file("extdata", "electric.sav", package = "readspss")
 dp <- read.sav(fl_por)
@@ -58,6 +62,10 @@ can be achieved using the following code.
 # example using sav
 fl_sav <- system.file("extdata", "electric.sav", package = "readspss")
 ds <- read.sav(fl_sav, convert.factors = FALSE)
+
+# example using zsav
+fl_zsav <- system.file("extdata", "cars.zsav", package = "readspss")
+dz <- read.sav(fl_zsav, convert.factors = FALSE)
 
 # example using por
 fl_por <- system.file("extdata", "electric.sav", package = "readspss")
@@ -98,15 +106,17 @@ R data.frame objects can be exported using `write.sav()` and `write.por()`.
 ```{R}
 libray(readspss)
 
-write.sav(cars, filepath = "cars.sav")
+write.sav(cars, filepath = "cars.sav") # optional compress = TRUE
+
+write.zsav(cars, filepath = "cars.zsav") # optional compress = TRUE
 
 write.por(cars, filepath = "cars.por")
 ```
 
-Export provides a few options to add a label, for compression of sav files and
-conversion of dates. Currently it is not possible to export strings longer than 
-255 chars. Obviously all exported files can be imported using SPSS and 
-`readspss` (PSPP is expected to work).
+Export provides a few options to add a label, for compression of sav and zsav 
+files and conversion of dates. Currently it is not possible to export strings 
+longer than 255 chars. Obviously all exported files can be imported using 
+SPSS and `readspss` (PSPP is expected to work).
 
 
 ## Package development
@@ -150,7 +160,8 @@ and countless hours of trial and error lead to the current state of the package.
 
 `readspss` uses code of Ben Pfaff for the encryption part. It uses code from 
 [TDA](http://www.stat.ruhr-uni-bochum.de/tda.html) by Goetz Rohwer and Ulrich
-Poetter for the conversion of numerics in the por-parser. The PSPP documentation
+Poetter for the conversion of numerics in the por-parser. The 
+[PSPP documentation](http://www.gnu.org/software/pspp/pspp-dev/html_node/index.html)
 was a huge help. Without the testing by Ulrich Poetter this package would not be
 as complete as it is.
 
