@@ -68,8 +68,8 @@ fl_zsav <- system.file("extdata", "cars.zsav", package = "readspss")
 dz <- read.sav(fl_zsav, convert.factors = FALSE)
 
 # example using por
-fl_por <- system.file("extdata", "electric.sav", package = "readspss")
-dp <- read.sav(fl_por, convert.factors = FALSE)
+fl_por <- system.file("extdata", "electric.por", package = "readspss")
+dp <- read.por(fl_por, convert.factors = FALSE)
 ```
 
 Since many features are self explanatory not all will be explained. Of course 
