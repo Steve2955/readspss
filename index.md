@@ -29,7 +29,7 @@ devtools::install_git("https://github.com/JanMarvin/readspss.git")
 
 ## Import
 
-For the import of sav and por files `read.sav()` and `read.por()` are available.
+For the import of (z)sav and por files `read.sav()` and `read.por()` are available.
 
 ```{R}
 library(readspss)
@@ -43,8 +43,8 @@ fl_zsav <- system.file("extdata", "cars.zsav", package = "readspss")
 dz <- read.sav(fl_zsav)
 
 # example using por
-fl_por <- system.file("extdata", "electric.sav", package = "readspss")
-dp <- read.sav(fl_por)
+fl_por <- system.file("extdata", "electric.por", package = "readspss")
+dp <- read.por(fl_por)
 ```
 
 Both functions return data.frame objects, containing numerics, dates, factors or
