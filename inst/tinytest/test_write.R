@@ -1,3 +1,10 @@
+
+# prepare packages #############################################################
+
+require(tinytest)
+library(readspss)
+require(foreign)
+
 #### test 1 ####
 if (dir.exists("data"))
   unlink("data", recursive = TRUE)
@@ -10,9 +17,8 @@ write.sav(cars, filepath = "data/cars.sav")
 
 dd <- read.sav("data/cars.sav")
 
-test_that("integer/numerics", {
+# "integer/numerics"
     expect_true(all.equal(cars, dd, check.attributes = FALSE))
-    })
 
 unlink("data", recursive = TRUE)
 
@@ -28,9 +34,8 @@ write.sav(df, filepath = "data/df.sav")
 
 dd <- read.sav("data/df.sav")
 
-test_that("character", {
+# "character"
   expect_true(all.equal(dd, df, check.attributes = FALSE))
-})
 
 unlink("data", recursive = TRUE)
 
@@ -49,9 +54,8 @@ write.sav(df, filepath = "data/df.sav", label = lab)
 
 dd <- read.sav("data/df.sav")
 
-test_that("character and letter mix", {
+# "character and letter mix"
   expect_true(all.equal(attr(dd, "var.label"), lab, check.attributes = FALSE))
-})
 
 unlink("data", recursive = TRUE)
 
@@ -70,9 +74,8 @@ df <- read.sav("data/hotel.sav")
 
 
 
-test_that("factor", {
+# "factor"
   expect_true(all.equal(dd, df, check.attributes = FALSE))
-})
 
 unlink("data", recursive = TRUE)
 
@@ -89,9 +92,8 @@ df <- read.por("data/mtcars.por", add.rownames = TRUE)
 
 
 
-test_that("por", {
+# "por"
   expect_true(all.equal(dd, df, check.attributes = FALSE))
-})
 
 unlink("data", recursive = TRUE)
 
@@ -112,10 +114,9 @@ write.por(dd, "data/mtcars2.por", convert.factors = FALSE)
 df2 <- read.por("data/mtcars2.por", convert.factors = TRUE)
 df2$AM <- df2$AM -1 # was not stored as factor, but was a factor previous
 
-test_that("por", {
+# "por"
   expect_true(all.equal(dd, df1, check.attributes = FALSE))
   expect_true(all.equal(mtcars, df2, check.attributes = FALSE))
-})
 
 unlink("data", recursive = TRUE)
 
@@ -138,12 +139,11 @@ unlink("data", recursive = TRUE)
 # df2 <- read.por("data/umlauts.por", fromEncoding = "CP1252")
 #
 #
-# test_that("umlauts", {
+# # "umlauts"
 #   # unsure how to test that it might be true (depending on the os's encoding)
 #   # expect_false(isTRUE(all.equal(dd, df1, check.attributes = FALSE)))
 #   expect_true(all.equal(dd, df2, check.attributes = FALSE))
 #   expect_true(identical(lab, attr(df2, "label")))
-# })
 #
 # unlink("data", recursive = TRUE)
 
@@ -157,9 +157,8 @@ dd <- iris
 write.sav(dd, "data/iris.sav", compress = TRUE)
 df <- read.sav("data/iris.sav")
 
-test_that("factor", {
+# "factor"
   expect_true(all.equal(dd, df, check.attributes = FALSE))
-})
 
 unlink("data", recursive = TRUE)
 
@@ -192,11 +191,10 @@ df_c <- read.sav("data/dd_c.sav")
 df_p <- read.por("data/dd_p.por")
 
 
-test_that("strings", {
+# "strings"
   expect_true(all.equal(dd, df_u, check.attributes = FALSE))
   expect_true(all.equal(dd, df_c, check.attributes = FALSE))
   expect_true(all.equal(dd, df_p, check.attributes = FALSE))
-})
 
 unlink("data", recursive = TRUE)
 
@@ -214,10 +212,9 @@ ds <- read.sav("data/dd.sav")
 dp <- read.por("data/dd.por")
 
 
-test_that("dates", {
+# "dates"
   expect_true(all.equal(dd, ds, check.attributes = FALSE))
   expect_true(all.equal(dd, dp, check.attributes = FALSE))
-})
 
 unlink("data", recursive = TRUE)
 
@@ -236,8 +233,7 @@ write.sav(dd, "data/dd.zsav", compress = TRUE, is_zsav = TRUE)
 ds <- read.sav("data/dd.zsav")
 
 
-test_that("zsav", {
+# "zsav"
   expect_true(all.equal(dd, ds, check.attributes = FALSE))
-})
 
 unlink("data", recursive = TRUE)

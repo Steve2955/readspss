@@ -1,7 +1,7 @@
 
 # prepare packages #############################################################
 
-require(testthat)
+require(tinytest)
 library(readspss)
 require(foreign)
 
@@ -17,9 +17,8 @@ df_r <- read.sav(df, convert.factors = FALSE, use.missings = FALSE)
 df_f <- read.spss(df, to.data.frame = TRUE, use.value.labels = FALSE,
                   use.missings = FALSE, stringsAsFactors=FALSE)
 
-test_that( "electric", {
-  expect_true(all.equal(df_r, df_f, check.attributes = FALSE) )
-})
+# "electric"
+expect_true(all.equal(df_r, df_f, check.attributes = FALSE) )
 
 
 # testdata
@@ -50,9 +49,8 @@ for (char in chars) {
 }
 
 
-test_that( "testdata", {
-  expect_true(all.equal(df_r, df_f, check.attributes = FALSE))
-})
+# "testdata"
+expect_true(all.equal(df_r, df_f, check.attributes = FALSE))
 
 
 # pspp testfiles ###############################################################
@@ -75,9 +73,8 @@ res <- data.frame(
   stringsAsFactors = FALSE
 )
 
-test_that( "third-test", {
-  expect_true(all.equal(df_r, res, check.attributes = FALSE) )
-})
+# "third-test"
+expect_true(all.equal(df_r, res, check.attributes = FALSE) )
 
 
 # v14
@@ -96,9 +93,8 @@ res <- data.frame(
   stringsAsFactors = FALSE
 )
 
-test_that( "fourth-test", {
-  expect_true( all.equal(res, df_r, check.attributes = FALSE) )
-})
+# "fourth-test"
+expect_true( all.equal(res, df_r, check.attributes = FALSE) )
 
 
 # haven testfile ###############################################################
@@ -113,9 +109,8 @@ df_r <- read.sav(df, convert.factors = TRUE, use.missings = FALSE)
 data(iris)
 
 
-test_that( "sixth-test", {
-  expect_true (all.equal(df_r, iris, check.attributes = FALSE))
-})
+# "sixth-test"
+expect_true (all.equal(df_r, iris, check.attributes = FALSE))
 
 # factors ######################################################################
 
@@ -126,9 +121,8 @@ df_r <- read.sav(fl)
 
 df_f <- foreign::read.spss(fl, to.data.frame = TRUE)
 
-test_that("factors", {
-  expect_true(all.equal(df_r, df_f, check.attributes = FALSE))
-})
+# "factors"
+expect_true(all.equal(df_r, df_f, check.attributes = FALSE))
 
 # hotel
 fl <- system.file("extdata", "hotel.sav", package="readspss")
@@ -137,9 +131,8 @@ df_r <- read.sav(fl)
 
 df_f <- foreign::read.spss(fl, to.data.frame = TRUE)
 
-test_that("factors", {
-  expect_true(all.equal(df_r, df_f, check.attributes = FALSE))
-})
+# "factors"
+expect_true(all.equal(df_r, df_f, check.attributes = FALSE))
 
 
 # physiology
@@ -149,9 +142,8 @@ df_r <- read.sav(fl)
 
 df_f <- foreign::read.spss(fl, to.data.frame = TRUE)
 
-test_that("factors", {
-  expect_true(all.equal(df_r, df_f, check.attributes = FALSE))
-})
+# "factors"
+expect_true(all.equal(df_r, df_f, check.attributes = FALSE))
 
 # repairs
 fl <- system.file("extdata", "repairs.sav", package="readspss")
@@ -160,9 +152,8 @@ df_r <- read.sav(fl)
 
 df_f <- foreign::read.spss(fl, to.data.frame = TRUE)
 
-test_that("factors", {
-  expect_true(all.equal(df_r, df_f, check.attributes = FALSE))
-})
+# "factors"
+expect_true(all.equal(df_r, df_f, check.attributes = FALSE))
 
 
 #### zsav test #####
@@ -171,9 +162,8 @@ fl <- system.file("extdata", "cars.zsav", package="readspss")
 
 df_r <- read.sav(fl)
 
-test_that("zsav", {
-  expect_true(all.equal(df_r, cars, check.attributes = FALSE))
-})
+# "zsav"
+expect_true(all.equal(df_r, cars, check.attributes = FALSE))
 
 #### encryption test #####
 
@@ -183,9 +173,8 @@ fle <- system.file("extdata", "hotel-encrypted.sav", package="readspss")
 df_u <- read.sav(flu)
 df_e <- read.sav(fle, pass = "pspp")
 
-test_that("encrypted", {
-  expect_true(all.equal(df_u, df_e, check.attributes = FALSE))
-})
+# "encrypted"
+expect_true(all.equal(df_u, df_e, check.attributes = FALSE))
 
 #### por test ####
 
@@ -197,8 +186,7 @@ df_sav <- read.sav(f_sav)
 df_por <- read.por(f_por)
 
 
-test_that("por_vs_sav", {
-  expect_true(all.equal(df_sav, df_por, check.attributes = FALSE))
-})
+# "por_vs_sav"
+expect_true(all.equal(df_sav, df_por, check.attributes = FALSE))
 
 
